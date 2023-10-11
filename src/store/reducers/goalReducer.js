@@ -16,7 +16,7 @@ export default function goalReducer(state = initialState, action) {
             return { ...state, loading: false, error: payload.error };
         }
         case ACTIONS.FETCH_GOAL_LOADING: {
-            return { ...state, loading: true };
+            return { ...state, loading: payload.loading };
         }
         case ACTIONS.ADD_GOAL: {
             return { ...state, goals: [...state.goals, payload.goal] };

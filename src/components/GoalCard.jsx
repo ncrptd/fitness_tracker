@@ -15,7 +15,7 @@ function GoalCard({ goal }) {
             <h5 className="mb-2 text-xl font-semibold text-gray-900">Goal Name: {goal?.name}</h5>
             <p className="mb-1 text-gray-700">Description: {goal?.description}</p>
             <p className="mb-1 text-gray-700">Target Date: {formattedDate}</p>
-            <p className="mb-1 text-gray-700">Target Calories Value: {goal?.targetCalories}</p>
+            <p className="mb-1 text-gray-700">Target Calories Value: {goal?.targetCaloriesValue}</p>
             <p className="mb-3 text-gray-700">Status: {goal?.status}</p>
 
             <button

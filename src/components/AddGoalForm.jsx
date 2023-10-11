@@ -24,7 +24,6 @@ function AddGoal({ setOpen }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
         const goal = {
             name: goalDetails.name,
             description: goalDetails.description,

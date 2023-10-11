@@ -5,10 +5,8 @@ import { fetchExercise } from "../store/actions/exerciseActions";
 
 export default function Exercise() {
     const exerciseState = useSelector((state) => state.exerciseReducer);
-
     const { exercises, loading } = exerciseState;
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         dispatch(fetchExercise())

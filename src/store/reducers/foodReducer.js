@@ -16,7 +16,7 @@ export default function foodReducer(state = initialState, action) {
             return { ...state, loading: false, error: payload.error };
         }
         case ACTIONS.FETCH_FOOD_LOADING: {
-            return { ...state, loading: true };
+            return { ...state, loading: payload.loading };
         }
         case ACTIONS.ADD_FOOD: {
             return { ...state, foodItems: [...state.foodItems, payload.foodItem] };

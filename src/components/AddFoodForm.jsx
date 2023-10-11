@@ -31,7 +31,6 @@ function AddFood({ setOpen }) {
             carbohydrates: parseFloat(foodDetails.carbohydrates),
             fat: parseFloat(foodDetails.fat),
         };
-
         dispatch(addFood(food));
 
         setFoodDetails({

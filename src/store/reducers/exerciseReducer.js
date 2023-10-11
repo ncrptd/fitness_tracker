@@ -17,7 +17,7 @@ export default function exerciseReducer(state = initialState, action) {
             return { ...state, loading: false, error: 'Error fetching exercise data' }
         }
         case ACTIONS.FETCH_EXERCISE_LOADING: {
-            return { ...state, loading: true }
+            return { ...state, loading: payload.loading }
         }
         case ACTIONS.ADD_EXERCISE: {
             const updatedExercises = [...state.exercises, payload.exercise]

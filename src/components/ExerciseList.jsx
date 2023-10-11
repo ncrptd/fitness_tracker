@@ -8,13 +8,13 @@ function ExerciseList({ exercises, loading }) {
 
             <div className="mb-4 mx-auto inline-block">
                 <AddExerciseDialog />
-
             </div>
 
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {loading ? <p>loading...</p> : exercises?.map((exercise) => (
+                {loading ? <p className="text-xl text-gray-500 mt-4">loading...</p> : exercises?.map((exercise) => (
                     <ExerciseCard key={exercise?._id} exercise={exercise} />
                 ))}
+                {!loading && exercises.length < 1 && <p className="text-xl text-gray-500 mt-4">No data found</p>}
             </div>
         </div>
     );

@@ -6,8 +6,7 @@ import { fetchFood } from "../store/actions/foodActions";
 export default function Food() {
     const foodState = useSelector((state) => state.foodReducer);
 
-    const { foodItems } = foodState;
-
+    const { foodItems, loading } = foodState;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +15,7 @@ export default function Food() {
 
     return (
         <div>
-            <FoodList foodItems={foodItems} />
+            <FoodList foodItems={foodItems} loading={loading} />
         </div>
     );
 }

@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const apiUrl = 'https://assignment-seventeen-backend.rockeybiswas.repl.co/api/exercises';
+import * as api from '../../api/index'
 
 export const ACTIONS = {
     ADD_EXERCISE: 'ADD_EXERCISE',
@@ -12,13 +10,13 @@ export const ACTIONS = {
 };
 export const fetchExercise = () => async (dispatch) => {
     try {
-        dispatch({ type: ACTIONS.FETCH_EXERCISE_LOADING });
-        const res = await axios.get(apiUrl);
-
+        dispatch({ type: ACTIONS.FETCH_EXERCISE_LOADING, payload: { loading: true } })
+        const res = await api.getExercises();
         if (res.status === 200) {
             const data = res.data;
             if (data) {
-                return dispatch({ type: ACTIONS.FETCH_EXERCISE_SUCCESS, payload: { exercises: data } });
+                dispatch({ type: ACTIONS.FETCH_EXERCISE_SUCCESS, payload: { exercises: data } });
+                dispatch({ type: ACTIONS.FETCH_EXERCISE_LOADING, payload: { loading: false } })
             }
         }
     } catch (error) {
@@ -30,7 +28,8 @@ export const fetchExercise = () => async (dispatch) => {
 
 export const addExercise = (exerciseDetails) => async (dispatch) => {
     try {
-        const res = await axios.post(apiUrl, exerciseDetails);
+        const res = await api.addExercise(exerciseDetails)
+
         if (res.status === 201) {
             const data = res.data;
             if (data) {
@@ -44,7 +43,7 @@ export const addExercise = (exerciseDetails) => async (dispatch) => {
 
 export const removeExercise = (id) => async (dispatch) => {
     try {
-        const res = await axios.delete(`${apiUrl}/${id}`);
+        const res = await api.deleteExercise(id)
         if (res.status === 204) {
             return dispatch({ type: ACTIONS.REMOVE_EXERCISE, payload: { id } })
         }
